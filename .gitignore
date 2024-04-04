@@ -1,0 +1,6 @@
+.env
+
+tangerine-web-application/node_modules
+tangerine-chat-gpt-clone/node_modules
+
+.DS_Store
