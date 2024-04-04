@@ -1,5 +1,5 @@
 ### Problem
-If an esteemed speaker came to my school for a research conference and gave tons of new technical insights that I want to explore, how do I retain all this information in Apple Notes and keep listening for more content at the same time? If I wanted to ask this speaker a few questions about their work without sounding inexperienced, how would I feed this context to GPT to come up with questions? 
+If an esteemed speaker came to my school for a research conference and gave tons of new technical insights that I want to explore, how do I retain all this information in my Apple Notes and keep listening for more content at the same time? If I wanted to ask this speaker a few questions about their work without sounding inexperienced, how would I feed this context to GPT to come up with the right questions? 
 
 Attending networking panels often presents the challenge described above. The wealth of information shared by panel speakers can be overwhelming, and establishing meaningful connections with the content for several days/weeks can be challenging. I mean, when was the last time you referred to previous meeting Apple notes? These hurdles hinder effective networking opportunities.
 
