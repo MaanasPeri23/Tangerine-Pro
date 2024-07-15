@@ -37,6 +37,6 @@ Hopefully you have everything you need to have a working demo on your localhost 
 
 I detailed my current and past architecture designs over time, and why I chose to make these decisions. I also give a demo of how my project operates, and list out the next concrete steps moving forward.
 
-Check it my technical presentation here: https://shorturl.at/ANTZ8
+Check it my technical presentation here: https://shorturl.at/hAgU4
 
 As always if you have any comments, concerns, or questions feel free to reach out to me via my socials, or open up a Github Issue. There are plenty of bugs within the current project but feel free to point out anything noteworthy:)
