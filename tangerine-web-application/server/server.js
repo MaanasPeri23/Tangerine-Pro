@@ -37,11 +37,12 @@ wss.on('connection', function connection(ws) {
                 //formatting session folder as January 19th, 3:30 PM format
                 const formattedDate = currentDate.toLocaleString('en-US', options).replace(',', '').replace(/:/g, '-'); 
                 // replace colons with hyphens and remove comma after the day
-                sessionFolder = `session_${formattedDate}/${Date.now()}.txt`; //TODO: store this in my IOS backend
-                // console.log('Started new session:', sessionFolder);
+                sessionFolder = `session_${formattedDate}/${Date.now()}.txt`;
 
-                //sending session folder to react frontend to pull specific bucket source from
-                broadcastToAllClients({ action: 'session_folder', folder: sessionFolder }, sessionFolder); //adding this second argument somehow changed the timing, allowing the IOS client enough time to pull the json["folder"] value
+                //Send session folder info to client
+                broadcastToAllClients({ action: 'session_folder', folder: sessionFolder} );
+
+
             } else if (data.text) {
     
                 //Referencing bucket
@@ -78,9 +79,9 @@ wss.on('connection', function connection(ws) {
     });
 });
 
-function broadcastToAllClients(message, sessionFolder){
+function broadcastToAllClients(message){
     clients.forEach((client) => {
-        client.send(JSON.stringify({...message, folder: sessionFolder}));
+        client.send(JSON.stringify({...message}));
     })
 }
 
