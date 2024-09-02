@@ -12,7 +12,7 @@
 		5DCB1E932BA7AEC00040A939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DCB1E922BA7AEC00040A939 /* Assets.xcassets */; };
 		5DCB1E972BA7AEC00040A939 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DCB1E962BA7AEC00040A939 /* Preview Assets.xcassets */; };
 		5DCB1EA02BA7AF3D0040A939 /* AudioClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCB1E9F2BA7AF3D0040A939 /* AudioClass.swift */; };
-		5DCB1EA92BA7F9920040A939 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 5DCB1EA82BA7F9920040A939 /* Starscream */; };
+		5DED208D2C83A64000ECFF79 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 5DED208C2C83A64000ECFF79 /* Starscream */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DCB1EA92BA7F9920040A939 /* Starscream in Frameworks */,
+				5DED208D2C83A64000ECFF79 /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +93,7 @@
 			);
 			name = ProjectTangerine;
 			packageProductDependencies = (
-				5DCB1EA82BA7F9920040A939 /* Starscream */,
+				5DED208C2C83A64000ECFF79 /* Starscream */,
 			);
 			productName = ProjectTangerine;
 			productReference = 5DCB1E8B2BA7AEBD0040A939 /* ProjectTangerine.app */;
@@ -124,7 +124,7 @@
 			);
 			mainGroup = 5DCB1E822BA7AEBD0040A939;
 			packageReferences = (
-				5DCB1EA72BA7F9920040A939 /* XCRemoteSwiftPackageReference "Starscream" */,
+				5DED208B2C83A64000ECFF79 /* XCRemoteSwiftPackageReference "Starscream" */,
 			);
 			productRefGroup = 5DCB1E8C2BA7AEBD0040A939 /* Products */;
 			projectDirPath = "";
@@ -377,7 +377,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5DCB1EA72BA7F9920040A939 /* XCRemoteSwiftPackageReference "Starscream" */ = {
+		5DED208B2C83A64000ECFF79 /* XCRemoteSwiftPackageReference "Starscream" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/daltoniam/Starscream.git";
 			requirement = {
@@ -388,9 +388,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5DCB1EA82BA7F9920040A939 /* Starscream */ = {
+		5DED208C2C83A64000ECFF79 /* Starscream */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5DCB1EA72BA7F9920040A939 /* XCRemoteSwiftPackageReference "Starscream" */;
+			package = 5DED208B2C83A64000ECFF79 /* XCRemoteSwiftPackageReference "Starscream" */;
 			productName = Starscream;
 		};
 /* End XCSwiftPackageProductDependency section */

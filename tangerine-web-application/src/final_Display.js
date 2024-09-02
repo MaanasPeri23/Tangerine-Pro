@@ -19,28 +19,29 @@ const TranscriptDisplay = () => {
     
         try {
             //AWS S3 bucket configurations
-            const awsConfig = {
-                accessKeyId: process.env.AWS_Bucket_ID,
-                secretAccessKey: process.env.AWS_Secret_Key,
-                region: process.env.AWS_Bucket_Region
-            };
-            AWS.config.update(awsConfig);
-            const s3 = new AWS.S3();
-            const params = {
-                Bucket: process.env.AWS_Bucket_Name,
-                Prefix: `${data.folder}/`
-            };
+          //   const awsConfig = {
+          //       accessKeyId: process.env.AWS_Bucket_ID,
+          //       secretAccessKey: process.env.AWS_Secret_Key,
+          //       region: process.env.AWS_Bucket_Region
+          //   };
+          //   AWS.config.update(awsConfig);
+          //   const s3 = new AWS.S3();
+          //   const params = {
+          //       Bucket: process.env.AWS_Bucket_Name,
+          //       Prefix: `${data.folder}/`
+          //   };
           
-            //returning only the latest text file to display real-time transcription
-            const listObjectsResponse = await s3.listObjectsV2(params).promise();
-            const latestObject = listObjectsResponse.Contents[listObjectsResponse.Contents.length - 1];
-            const latestObjectKey = latestObject.Key;
-            const getObjectResponse = await s3.getObject({ Bucket: params.Bucket, Key: latestObjectKey }).promise();
-            const latestTranscript = getObjectResponse.Body.toString('utf-8');
+          //   //returning only the latest text file to display real-time transcription
+          //   const listObjectsResponse = await s3.listObjectsV2(params).promise();
+          //   const latestObject = listObjectsResponse.Contents[listObjectsResponse.Contents.length - 1];
+          //   const latestObjectKey = latestObject.Key;
+          //   const getObjectResponse = await s3.getObject({ Bucket: params.Bucket, Key: latestObjectKey }).promise();
+          //   const latestTranscript = getObjectResponse.Body.toString('utf-8');
 
-            console.log(latestTranscript)
+          //   console.log(latestTranscript)
     
-          setTranscript(latestTranscript);
+          // setTranscript(latestTranscript);
+          console.log("hello world")
         //   console.log('Combined transcript:', latestTranscript);
           
         } catch (error) {

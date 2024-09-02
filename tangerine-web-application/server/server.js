@@ -1,6 +1,6 @@
 const WebSocket = require('ws');
 const AWS = require('aws-sdk');
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 dotenv.config();
 
 const wss = new WebSocket.Server({ port: 8080 });
@@ -26,7 +26,7 @@ wss.on('connection', function connection(ws) {
             console.log('Received message:', message);
 
             if (data.action === 'start_session') {
-                const currentDate = new Date();
+                const currentDate = new Date(); 
                 const options = {
                     month: 'long',
                     day: 'numeric',
@@ -37,28 +37,32 @@ wss.on('connection', function connection(ws) {
                 //formatting session folder as January 19th, 3:30 PM format
                 const formattedDate = currentDate.toLocaleString('en-US', options).replace(',', '').replace(/:/g, '-'); 
                 // replace colons with hyphens and remove comma after the day
-                sessionFolder = `session_${formattedDate}`;
+                sessionFolder = `session_${formattedDate}/${Date.now()}.txt`; //TODO: store this in my IOS backend
                 // console.log('Started new session:', sessionFolder);
 
                 //sending session folder to react frontend to pull specific bucket source from
-                broadcastToAllClients({ action: 'session_folder', folder: sessionFolder }, sessionFolder);
+                broadcastToAllClients({ action: 'session_folder', folder: sessionFolder }, sessionFolder); //adding this second argument somehow changed the timing, allowing the IOS client enough time to pull the json["folder"] value
             } else if (data.text) {
     
                 //Referencing bucket
-                const params = {
-                    Bucket: process.env.AWS_Bucket_Name,
-                    Key: `${sessionFolder}/${Date.now()}.txt`, //get's current date and parses to the rule format described above
-                    Body: data.text //transcribed text
-                };
-                //Uploading to S3 bucket
-                s3.upload(params, function(err, data) {
-                    if (err) {
-                        console.log('Error uploading to S3:', err);
-                    } else {
-                        //notify all websocket clients that data has been pushed to the S3 bucket
-                        broadcastToAllClients({ action: 'data_pushed'}, sessionFolder);
-                    }
-                });
+                //not updating the same file, need to use PUT Request to update the file
+                // const params = {
+                //     Bucket: process.env.AWS_Bucket_Name,
+
+                // ISSSUE HERE: sure we're using a global variable called sessionFolder, but we're creating a new txt file every time using Date.now()
+                //     Key: `${sessionFolder}/${Date.now()}.txt`, //get's current date and parses to the rule format described above
+                //     Body: data.text //transcribed text
+                // };
+                // //Uploading to S3 bucket
+                // s3.upload(params, function(err, data) {
+                //     if (err) {
+                //         console.log('Error uploading to S3:', err);
+                //     } else {
+                //         //notify all websocket clients that data has been pushed to the S3 bucket
+                //         broadcastToAllClients({ action: 'data_pushed'}, sessionFolder);
+                //     }
+                // });
+                console.log("received data", data.text, "in this folder:", data.folder)
 
             }
             

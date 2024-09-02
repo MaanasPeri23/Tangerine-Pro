@@ -30,6 +30,9 @@ class SpeechRecognitionViewModel: NSObject, ObservableObject {
     @Published var isAvailable: Bool = false
     @Published var errorMessage: String = ""
     
+    private var sessionFolderTxt: String?
+    
+    
     override init() {
         super.init()
         speechRecognizer.delegate = self
@@ -131,7 +134,7 @@ class SpeechRecognitionViewModel: NSObject, ObservableObject {
                     isFinal = result.isFinal
 
                     // Create a dictionary with transcribed text
-                    let message = ["text": self.transcribedText]
+                    let message: [String: Any] = ["folder": self.sessionFolderTxt ?? "", "text": self.transcribedText]
 
                     // Convert the dictionary to JSON data
                     if let jsonData = try? JSONSerialization.data(withJSONObject: message, options: []) {
@@ -186,6 +189,18 @@ extension SpeechRecognitionViewModel: WebSocketDelegate {
         case .disconnected(let reason, let code):
             print("Swift WebSocket disconnected:", reason, code)
         case .text(let string):
+            
+            //if the string is a valid text when using utf8 and set to data, then serialize data to json object. it is a dictionary, so string: Any type works best.
+            if let data = string.data(using: .utf8), let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String? : Any] {
+                
+                //checking if message is a session_folder message
+                if let action = json["action"] as? String, action == "session_folder" {
+                    self.sessionFolderTxt = json["folder"] as? String
+                    print("Session Folder And Text recieved: ", self.sessionFolderTxt ?? "No folder name")
+                }
+            }
+            
+            
             print("Swift Client received message from server:", string)
             // Handle any incoming messages from the server if needed
         case .binary(let data):
